@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Voicebot Demo</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js"
+      defer
+    ></script>
+  </head>
+  <body style="text-align:center; font-family: Arial; margin-top:100px;">
+    <h2>Click below to talk to the Voice Assistant</h2>
+
+    <button onclick="startCall()" 
+      style="padding:15px 30px; font-size:18px; cursor:pointer;">
+      Start Voice Call
+    </button>
+
+    <script>
+      function startCall() {
+        window.vapiSDK.run({
+          assistant: "9478c4d0-74d7-486d-8343-0db2523cf3db",
+          config: {
+            voiceOnly: true
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
