@@ -8,18 +8,21 @@
     ></script>
   </head>
 
-  <body style="text-align:center; font-family: Arial; margin-top:100px;">
+  <body style="text-align:center; font-family: Arial; margin-top:120px;">
     <h2>Click below to talk to the Voice Assistant</h2>
 
     <button id="callBtn"
-      style="padding:15px 30px; font-size:18px; cursor:pointer;">
+      style="padding:18px 35px; font-size:20px; cursor:pointer; border-radius:8px;">
       Start Voice Call
     </button>
 
     <script>
       window.addEventListener("load", () => {
-        document.getElementById("callBtn").onclick = () => {
+        const button = document.getElementById("callBtn");
+
+        button.onclick = () => {
           window.vapiSDK.run({
+            apiKey: "2aeaa1b5-f7b0-4566-812e-9a503400db33",
             assistant: "9478c4d0-74d7-486d-8343-0db2523cf3db",
             config: {
               voiceOnly: true
