@@ -5,40 +5,32 @@
     <title>Voicebot Demo</title>
 
     <!-- Vapi Web SDK -->
-    <script
-      src="https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js"
-      async
-    ></script>
+    <script src="https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js"></script>
   </head>
 
   <body style="text-align:center; font-family: Arial; margin-top:120px;">
     <h2>Click below to talk to the Voice Assistant</h2>
 
     <button id="startBtn"
-      style="padding:18px 35px; font-size:20px; cursor:pointer;">
+      style="padding:18px 35px; font-size:20px; cursor:pointer; border-radius:8px;">
       Start Voice Call
     </button>
 
     <script>
+      const PUBLIC_KEY = "854ee8b0-19f3-47b9-bc7f-789cda39d312";
       const ASSISTANT_ID = "9478c4d0-74d7-486d-8343-0db2523cf3db";
-      const PUBLIC_KEY = "2aeaa1b5-f7b0-4566-812e-9a503400db33";
 
-      function waitForVapi(cb) {
-        if (window.vapiSDK && window.vapiSDK.run) {
-          cb();
-        } else {
-          setTimeout(() => waitForVapi(cb), 100);
+      document.getElementById("startBtn").addEventListener("click", function () {
+        if (!window.vapiSDK) {
+          alert("Vapi SDK not loaded. Please refresh.");
+          return;
         }
-      }
 
-      document.getElementById("startBtn").onclick = () => {
-        waitForVapi(() => {
-          window.vapiSDK.run({
-            apiKey: PUBLIC_KEY,
-            assistant: ASSISTANT_ID
-          });
+        window.vapiSDK.run({
+          apiKey: PUBLIC_KEY,
+          assistant: ASSISTANT_ID
         });
-      };
+      });
     </script>
   </body>
 </html>
